@@ -1,0 +1,36 @@
+# /etc/network/interfaces
+## Add 1 Gbit/s NIC 
+# eth0 confiugration
+auto eth0
+iface eth0 inet dhcp
+#
+# eth1 configuration
+auto eth1
+iface eth1 inet dhcp
+#
+# # eth2 configuration
+auto eth2
+iface eth2 inet dhcp
+#
+# # eth3 configuration
+auto eth3
+iface eth3 inet dhcp
+#
+# # eth4 configuration
+auto eth4
+iface eth4 inet dhcp
+#
+# eth5 configuration
+auto eth5
+iface eth5 inet dhcp
+#
+# # eth6 configuration
+auto eth6
+iface eth6 inet dhcp
+#
+# # eth7 configuration
+auto eth7
+iface eth7 inet dhcp
+#
+## Add SFP28 
+# HERE
