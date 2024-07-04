@@ -15,7 +15,7 @@ mmc dev 1
 mmc write 0xa4000000 0 0xd2000
 ## Boot the Ubuntu 22.04 Image
 boot
-# Password for login as root
+## Password for login as root
 root
 ## resize eMMC with fdisk
 fdisk /dev/mmcblk1
