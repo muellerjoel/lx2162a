@@ -9,7 +9,30 @@ sync
 ## Press a key innert 10 sec to stop autoboot
 ### To flash to eMMC run the following commands (it will wipe your data on the eMMC device).
 load mmc 0:1 0xa4000000 ubuntu-core.img
+
 mmc dev 1
+
 mmc write 0xa4000000 0 0xd2000
 ## Boot the Ubuntu 22.04 Image
 boot
+## resize eMMC
+fdisk /dev/mmcblk1
+
+## delete partition
+d
+## new partion
+n
+## primary partition
+p
+## fist partition
+1
+## start sector
+131072
+## end sector
+Press Enter
+## remove signature
+n
+# write to disk
+w
+## Finish resizing 
+resize2fs /dev/mmcblk0p1
