@@ -7,7 +7,7 @@ sync
 ## Insert SD-Card in the slot
 ## Power on
 ## Press a key innert 10 sec to stop autoboot
-## To flash to eMMC run the following commands (it will wipe your data on the eMMC device).
+### To flash to eMMC run the following commands (it will wipe your data on the eMMC device).
 load mmc 0:1 0xa4000000 ubuntu-core.img
 mmc dev 1
 mmc write 0xa4000000 0 0xd2000
