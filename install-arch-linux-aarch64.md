@@ -1,7 +1,7 @@
-# 
+# Make partition on SSD
 fdisk /dev/nvme0n1
 
-At the fdisk prompt, delete old partitions and create a new one:
+# At the fdisk prompt, delete old partitions and create a new one:
 
     Type o. This will clear out any partitions on the drive.
     Type p to list partitions. There should be no partitions left.
@@ -10,14 +10,12 @@ At the fdisk prompt, delete old partitions and create a new one:
     Type n, then p for primary, 2 for the second partition on the drive, and then press ENTER twice to accept the default first and last sector.
     Write the partition table and exit by typing w.
 
-Create and mount the FAT filesystem:
-
+# Create and mount the FAT filesystem:
 mkfs.vfat /dev/nvme0n1p1
 mkdir boot
 mount /dev/nvme0n1p1 boot
 
-Create and mount the ext4 filesystem:
-
+# Create and mount the ext4 filesystem:
 mkfs.ext4 /dev/nvme0n1p2
 mkdir root
 mount /dev/nvme0n1p2 root
@@ -37,7 +35,7 @@ mount --rbind /sys sys
 mount --make-rslave sys
 mount --rbind /tmp tmp
 
-#Move anc Copy necessary files
+# Move and copy necessary files
 cp /etc/resolv.conf etc
 mv root/boot/* boot
 
