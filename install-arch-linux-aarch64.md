@@ -2,7 +2,7 @@
 ```
 fdisk /dev/nvme0n1
 ```
-# At the fdisk prompt, delete old partitions and create a new one:
+# At the fdisk, delete old partitions and create a new ones:
 Type **o**. This will clear out any partitions on the drive.
 
 Type **p** to list partitions. There should be no partitions left.
