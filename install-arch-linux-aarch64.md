@@ -9,7 +9,7 @@ Type **p** to list partitions. There should be no partitions left.
 
 Type **n**, then **p** for primary, **1** for the first partition on the drive, press **ENTER** to accept the default first sector, then type **+200M** for the last sector.
 
-Type **t**, then c to set the first partition to type W95 FAT32 (LBA).
+Type **t**, then c to set the first partition to type **W95 FAT32 (LBA)**.
 
 Type **n**, then **p** for primary, **2** for the second partition on the drive, and then press **ENTER** twice to accept the default first and last sector.
 
