@@ -139,4 +139,3 @@ umount -R /mnt
 ```
 reboot
 ```
-```
