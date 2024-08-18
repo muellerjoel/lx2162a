@@ -1,0 +1,48 @@
+# Format the partition with Btrfs
+mkfs.btrfs /dev/nvme0n1p1
+
+# Mount the partition
+mount /dev/nvme0n1p1 /mnt
+
+# Download the Arch Linux ARM64 root filesystem
+cd /mnt
+wget http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz
+
+# Extract the filesystem
+bsdtar -xpf ArchLinuxARM-aarch64-latest.tar.gz -C /mnt
+
+# Bind mount necessary filesystems
+mount --rbind /dev /mnt/dev
+mount --make-rslave /mnt/dev
+mount -t proc /proc /mnt/proc
+mount --rbind /sys /mnt/sys
+mount --make-rslave /mnt/sys
+mount --rbind /tmp /mnt/tmp
+
+# Copy DNS information
+cp /etc/resolv.conf /mnt/etc/
+
+# Chroot into the new system
+chroot /mnt /bin/bash
+
+# Initialize pacman keys and update the system
+pacman-key --init
+pacman-key --populate archlinuxarm
+pacman -Syu --noconfirm
+
+# Install essential packages
+pacman -S --noconfirm base linux linux-firmware openssh vim btrfs-progs
+
+# Set the root password
+echo "root:password" | chpasswd
+
+# Enable SSH root login (if desired)
+sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+# Alternatively, create a new user
+useradd -m -G wheel your_user
+echo "your_user:password" | chpasswd
+
+# Enable SSH service to start on boot
+systemctl enable sshd
+... to be continued
