@@ -1,12 +1,28 @@
+# locate uSD Card 
+lsblk
+
+# Delete an create one single partion
+fdisk /dev/mmcX
+d
+n
+Enter Enter Enter
+w
+
+# Install btrfs progs
+apt install btrfs-progs
+
 # Format the partition with Btrfs
-mkfs.btrfs /dev/nvme0n1p1
+mkfs.btrfs /dev/mmcXp1
 
 # Mount the partition
-mount /dev/nvme0n1p1 /mnt
+mount /dev/mmcXp1 /mnt
 
 # Download the Arch Linux ARM64 root filesystem
-cd /mnt
+cd /tmp
 wget http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz
+
+#install bsdtar
+apt install libarchive-tools
 
 # Extract the filesystem
 bsdtar -xpf ArchLinuxARM-aarch64-latest.tar.gz -C /mnt
@@ -31,18 +47,19 @@ pacman-key --populate archlinuxarm
 pacman -Syu --noconfirm
 
 # Install essential packages
-pacman -S --noconfirm base linux linux-firmware openssh vim btrfs-progs
+pacman -S --noconfirm base base-devel linux linux-firmware openssh vim btrfs-progs dhcpcd dosfstools exfat-utils htop sysstat lm_sensors nano  zip unzip p7zip git gcc make sudo bash-completion
 
 # Set the root password
-echo "root:password" | chpasswd
+passwd
 
 # Enable SSH root login (if desired)
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 # Alternatively, create a new user
 useradd -m -G wheel your_user
-echo "your_user:password" | chpasswd
+passwd your_user
 
 # Enable SSH service to start on boot
 systemctl enable sshd
 ... to be continued
+1
