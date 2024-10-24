@@ -1,8 +1,9 @@
 # /etc/network/interfaces
-## Add 1 Gbit/s NIC # Loopback interface
+# Loopback interface
 auto lo
 iface lo inet loopback
 
+## Add 1 Gbps NIC 
 # eth0 configuration
 auto eth0
 iface eth0 inet dhcp
@@ -43,5 +44,23 @@ auto eth7
 iface eth7 inet dhcp
 iface eth7 inet6 dhcp
 
-## Add SFP28 
-# HERE
+## Add SFP+ 10 Gbps & SFP28 25 Gbps
+# eth8 configuration
+auto eth8 
+iface eth8 inet dhcp
+iface eth8 inet6 dhcp
+
+# eth9 configuration
+auto eth9 
+iface eth9 inet dhcp
+iface eth9 inet6 dhcp
+
+# eth10 configuration
+auto eth10
+iface eth10 inet dhcp
+iface eth10 inet6 dhcp
+
+# eth11 configuration
+auto eth11 
+iface eth11 inet dhcp
+iface eth11 inet6 dhcp
