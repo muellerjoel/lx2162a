@@ -27,7 +27,7 @@ set -e
 # - focal (20.04)
 # - jammy (22.04)
 : ${UBUNTU_VERSION:=jammy}
-: ${UBUNTU_ROOTFS_SIZE:=350M}
+: ${UBUNTU_ROOTFS_SIZE:=512M}
 : ${DEBIAN_VERSION:=bullseye}
 # Debian Version
 # - bullseye (11)
